@@ -1,15 +1,21 @@
 import cv2
 import numpy as np
 
+# Define a function to calculate HSV limits for a given color
 def get_limits(color):
+    # Convert the color to HSV
     c=np.uint8([[color]])
     hsvc=cv2.cvtColor(c,cv2.COLOR_BGR2HSV)
+    
+    # Set the lower and upper bounds for the HSV range
     lower=hsvc[0][0][0]-10,50,50
     upper=hsvc[0][0][0]+10,255,255
+    
+    # Convert the bounds to numpy arrays
     lower=np.array(lower,dtype=np.uint8)
     upper=np.array(upper,dtype=np.uint8)
+    
     return lower,upper
-
 
 # Define the lower and upper bounds for the HSV color range
 yellow=[0,255,255]
